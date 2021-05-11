@@ -1,5 +1,6 @@
 # Учебный шаблон проекта Portfolio
 
+<<<<<<< HEAD
 > Перед установкой зависимостей и запуском проекта убедитесь, что у вас установлена [последняя версия Node.js & NPM](https://nodejs.org/en/download/current/), а так же
 > [последняя версия Yarn](https://yarnpkg.com/ru/docs/install)
 
@@ -9,6 +10,10 @@
 > Дата выполнения: 10.05.2021
 
 ## Чтобы развернуть проект необходимо:
+=======
+> Перед установкой зависимостей и запуском проекта убедитесь, что у вас установлена [последняя версия Node.js & NPM](https://nodejs.org/en/download/current/), а так же 
+[последняя версия Yarn](https://classic.yarnpkg.com/en/docs/install)
+>>>>>>> b385d645ef1bcef73ce9e671d3ef7bb897c2b59f
 
 ```sh
 $ git clone git@github.com:loftschool/vue-boilerplate.git
