@@ -1,0 +1,66 @@
+.skills {
+  background: url("../images/content/skills.png") no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  &::before {
+    content: url("../images/content/hand.png");
+    position: absolute;
+    left: 0;
+    top: 129px;
+  }
+  &__inner {
+    max-width: 751px;
+    margin: 0 auto;
+    padding-top: 144px;
+  }
+  &__title {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    color: #ffffff;
+  }
+  &__subtitle {
+    margin-top: 53px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    position: relative;
+    width: 132px;
+    height: 132px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(233, 233, 233, 0.1);
+    border-radius: 50%;
+    &::after {
+      content: "";
+      border-radius: 50%;
+      border: 10px solid transparent;
+      background: linear-gradient(
+          0deg,
+          transparent var(--percent-white),
+          orange var(--percent-circle)
+        )
+        border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      position: absolute;
+      width: 120px;
+      height: 120px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+- const skills = [{percent: 25, name: 'HTML5'}, {percent: 5, name: 'CSS3'}, {percent: 75, name: 'Javascript'}, {percent: 25, name: 'Jquery и Vue.js'}]
+- const workflow = [{percent: 5, name: 'GIT'}, {percent: 25, name: 'Terminal'}, {percent: 50, name: 'Gulp'}, {percent: 60, name: 'Webpack'}]
+
+section.skills 
+    .skills__inner 
+        .skills__title Чем я могу быть полезен вам
+        .skills__subtitle Этот сайт я сделал в рамках обучения в Школе онлайн образования 
+            p LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите,
+            p как тут всё классно и красиво!
+        .skills__block 
+            .skills__caption Front-end
+                ul.skills__list 
+                    each item in skills 
+                        li.skills__item(style={"--percent-circle": item.percent + '%', "--percent-white": 100 - item.percent + '%'})=item.name
+            .skills__caption Workflow
+                ul.skills__list 
+                    each item in workflow 
+                        li.skills__item(style={"--percent-circle": item.percent + '%', "--percent-white": 100 - item.percent + '%'})=item.name
