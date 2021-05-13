@@ -47,17 +47,18 @@
     &::after {
       content: "";
       border-radius: 50%;
-      border: 10px solid transparent;
-      background: linear-gradient(
+      border: 10px solid;
+      border-image: linear-gradient(0deg, orange 50%);
+      /* background: linear-gradient(
           0deg,
           transparent var(--percent-white),
           orange var(--percent-circle)
         )
         border-box;
-      -webkit-mask: linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
+      /* -webkit-mask: linear-gradient(#fff 0 0) padding-box, */
+      /* linear-gradient(#fff 0 0); */
       -webkit-mask-composite: destination-out;
-      mask-composite: exclude;
+      /* mask-composite: exclude; */
       position: absolute;
       width: 120px;
       height: 120px;

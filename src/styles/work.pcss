@@ -1,3 +1,123 @@
 .work {
   min-height: 100vh;
+  &__inner {
+    max-width: 1469px;
+    margin: 0 auto;
+    margin-top: 197px;
+  }
+  &__left {
+    position: relative;
+    display: inline-flex;
+    max-width: 975px;
+    &::after {
+      content: "2";
+      position: absolute;
+      right: -178px;
+      top: 40%;
+      transform: translate(0, -50%);
+      font-family: Open Sans;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 400px;
+      line-height: 48px;
+      color: #e6e6e6;
+      z-index: -1;
+    }
+  }
+  &__list {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 59px;
+  }
+  &__img {
+    &--small {
+      width: 173px;
+    }
+  }
+  &__title {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 49px;
+    color: #333c49;
+    margin-bottom: 83px;
+  }
+  &__slide {
+    align-self: flex-end;
+    margin-bottom: 60px;
+  }
+  &__button {
+    background: #333c49;
+    width: 53px;
+    height: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__click {
+    &.active {
+      opacity: 1;
+    }
+    opacity: 0.2;
+    fill: #ffffff;
+    width: 10;
+    height: 17px;
+  }
+  &__block {
+    display: flex;
+  }
+  &__subject {
+    display: flex;
+  }
+  &__object {
+    background: #f3f6f9;
+    border-radius: 40px;
+    padding: 14px 22px;
+    margin-left: 8px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  &__right {
+    margin-left: 159px;
+  }
+  &__caption {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 41px;
+    color: #333c49;
+    margin-top: 35px;
+  }
+  &__subcaption {
+    margin-top: 35px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: rgba(51, 60, 73, 0.8);
+  }
+  &__icons {
+    margin-top: 45px;
+    display: flex;
+  }
+  &__icon {
+    width: 22px;
+    height: 22px;
+    fill: #586ed3;
+  }
+  &__link {
+    margin-left: 16px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: #586ed3;
+    text-decoration: none;
+  }
 }
