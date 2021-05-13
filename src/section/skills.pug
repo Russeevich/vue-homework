@@ -1,5 +1,7 @@
-- const skills = [{percent: 25, name: 'HTML5'}, {percent: 5, name: 'CSS3'}, {percent: 75, name: 'Javascript'}, {percent: 25, name: 'Jquery и Vue.js'}]
-- const workflow = [{percent: 5, name: 'GIT'}, {percent: 25, name: 'Terminal'}, {percent: 50, name: 'Gulp'}, {percent: 60, name: 'Webpack'}]
+- const skills = [{percent: 25, name: 'HTML5'}, {percent: 15, name: 'CSS3'}, {percent: 75, name: 'Javascript'}, {percent: 25, name: 'Jquery и Vue.js'}]
+- const workflow = [{percent: 14, name: 'GIT'}, {percent: 25, name: 'Terminal'}, {percent: 50, name: 'Gulp'}, {percent: 40, name: 'Webpack'}]
+- const dashed = 425
+- const radius = 68
 
 section.skills 
     .skills__inner 
@@ -11,8 +13,12 @@ section.skills
             .skills__caption Front-end
                 ul.skills__list 
                     each item in skills 
-                        li.skills__item(style={"--percent-circle": item.percent + '%', "--percent-white": 100 - item.percent + '%'})=item.name
+                        li.skills__item
+                            +circle(radius, dashed, dashed / 100 * (100 - item.percent))
+                            .skills__text=item.name
             .skills__caption Workflow
                 ul.skills__list 
                     each item in workflow 
-                        li.skills__item(style={"--percent-circle": item.percent + '%', "--percent-white": 100 - item.percent + '%'})=item.name
+                        li.skills__item
+                            +circle(radius, dashed, dashed / 100 * (100 - item.percent))
+                            .skills__text=item.name

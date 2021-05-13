@@ -3,6 +3,8 @@
   background-size: cover;
   min-height: 100vh;
   position: relative;
+  display: flex;
+  justify-content: center;
   &::before {
     content: url("../images/content/hand.png");
     position: absolute;
@@ -10,9 +12,8 @@
     top: 129px;
   }
   &__inner {
-    max-width: 751px;
-    margin: 0 auto;
     padding-top: 144px;
+    margin-left: 261px;
   }
   &__title {
     font-family: Open Sans;
@@ -33,35 +34,59 @@
   }
   &__list {
     display: flex;
-    justify-content: space-between;
+    margin-top: 36px;
   }
   &__item {
     position: relative;
-    width: 132px;
-    height: 132px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid rgba(233, 233, 233, 0.1);
-    border-radius: 50%;
-    &::after {
-      content: "";
-      border-radius: 50%;
-      border: 10px solid;
-      border-image: linear-gradient(0deg, orange 50%);
-      /* background: linear-gradient(
-          0deg,
-          transparent var(--percent-white),
-          orange var(--percent-circle)
-        )
-        border-box;
-      /* -webkit-mask: linear-gradient(#fff 0 0) padding-box, */
-      /* linear-gradient(#fff 0 0); */
-      -webkit-mask-composite: destination-out;
-      /* mask-composite: exclude; */
-      position: absolute;
-      width: 120px;
-      height: 120px;
+    width: 138px;
+    height: 138px;
+    margin-left: 64px;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  &__text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__caption {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+    color: #ffffff;
+    &:first-child {
+      margin-bottom: 56px;
+    }
+  }
+  &__block {
+    margin-top: 79px;
+    padding-bottom: 179px;
+    margin-left: 127px;
+  }
+  &__text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  &__circle {
+    fill: transparent;
+    &--layer {
+      &--under {
+        stroke: #e9e9e9;
+        stroke-opacity: 0.1;
+        stroke-width: 3px;
+      }
+      &--above {
+        stroke-width: 10px;
+      }
     }
   }
 }
