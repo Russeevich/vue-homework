@@ -1,18 +1,16 @@
-- const nav = [{title: 'Обо мне', href: 'about'}, {title: 'Навыки', href: 'skills'}, {title: 'Работы', href: 'works'}, {title: 'Отзывы', href: 'review'}]
-- const social = [{image: 'insta', href: 'about'}, {image: 'github', href: 'skills'}, {image: 'vk', href: 'works'}, {image: 'envelope', href: 'review'}]
+- 
+    var social = [
+      {image: 'insta', href: 'about'}, 
+      {image: 'github', href: 'skills'}, 
+      {image: 'vk', href: 'works'}, 
+      {image: 'envelope', href: 'review'}
+    ]
 
 section.header
     .header__inner
         .header__logo BA
-        ul.nav.nav--header
-            each item in nav 
-                li.nav__item.nav__item--header
-                    a.nav__link.nav__link--header(href=item.href)=item.title
-        ul.social.social--header
-            each item in social
-                li.social__item.social__item--header
-                    a.social__link.social__link--header(href=item.href)
-                        +icon(item.image, "social__icon social__icon--header")
+        +nav('header')
+        +social('header', social)
     .header__info
         h2.header__title Личный сайт
             p веб разработчика
