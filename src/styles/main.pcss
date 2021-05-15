@@ -3,3 +3,38 @@
 @import "./mixins.pcss";
 @import "./layout/base.pcss";
 @import "./blocks/*.pcss";
+
+.container {
+  &--header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 58px 0 88px;
+    min-height: 100vh;
+  }
+  &--about {
+    padding: 88px 0 274px;
+    max-width: 1006px;
+  }
+  &--skills {
+    padding: 144px 0 147px;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1310px;
+  }
+  &--work {
+    padding: 197px 0 209px;
+    max-width: 1495px;
+  }
+  &--reviews {
+    padding: 138px 0 198px;
+  }
+  &--footer {
+    padding: 62px 0 74px;
+  }
+}
+
+.welcom-section {
+  background: url("../images/content/1800.png") no-repeat;
+  background-size: cover;
+}

@@ -1,32 +1,33 @@
 - const image = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg5.jpg']
 
 section.work 
-    .work__inner
-        .work__title Мои работы
-        .work__block
-            .work__left(data-slide=2)
-                +image('content/bg1.jpg', 'work__img')
-                ul.work__list 
-                    each item in image
-                        li.work__item 
-                            +image(`content/${item}`, 'work__img--small')
-                .work__slide
-                    .work__button
-                        +icon('right', 'work__click active')
-                    .work__button
-                        +icon('left', 'work__click')
-            .work__right
-                ul.work__subject 
-                    li.work__object HTML
-                    li.work__object CSS
-                    li.work__object Javascript
-                .work__info 
-                    .work__caption Сайт школы 
-                        p образования
-                    .work__subcaption Этот парень проходил обучение 
-                        p веб-разработке не где-то, а в LoftSchool!
-                        p 2 месяца только самых тяжелых
-                        p испытаний и бессонных ночей!
-                    .work__icons 
-                        +icon('link', 'work__icon')
-                        a.work__link(href="/site") Посмотреть сайт
+    .container.container--work
+        .work__inner
+            .work__title Мои работы
+            .work__block
+                .work__left(data-slide=2)
+                    +image('content/bg1.jpg', 'work__img')
+                    ul.work__list 
+                        each item in image
+                            li.work__item 
+                                +image(`content/${item}`, 'work__img--small')
+                    .work__slide
+                        .work__button.active
+                            +icon('right', 'work__click')
+                        .work__button
+                            +icon('left', 'work__click')
+                .work__right
+                    ul.work__subject 
+                        li.work__object HTML
+                        li.work__object CSS
+                        li.work__object Javascript
+                    .work__info 
+                        .work__caption Сайт школы 
+                            p образования
+                        .work__subcaption Этот парень проходил обучение 
+                            p веб-разработке не где-то, а в LoftSchool!
+                            p 2 месяца только самых тяжелых
+                            p испытаний и бессонных ночей!
+                        .work__icons 
+                            +icon('link', 'work__icon')
+                            a.work__link(href="/site") Посмотреть сайт
