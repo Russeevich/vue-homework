@@ -32,6 +32,10 @@
     width: 100%;
     &--small {
       width: 173px;
+      cursor: pointer;
+      &:hover {
+        border: 2px solid #ff9a00;
+      }
     }
   }
   &__title {
@@ -59,6 +63,9 @@
       & > .work__click {
         opacity: 1;
       }
+      &:hover > .work__click {
+        fill: #ff9a00;
+      }
     }
     & > .work__click {
       opacity: 0.2;
@@ -66,6 +73,7 @@
   }
   &__click {
     fill: #ffffff;
+    transition: all 0.3s ease;
     width: 10;
     height: 17px;
   }

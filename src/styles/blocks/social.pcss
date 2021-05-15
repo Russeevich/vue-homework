@@ -11,6 +11,10 @@
       height: 50px;
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      &:hover {
+        border-color: #ff9a00;
+      }
     }
   }
   &__link {
@@ -21,7 +25,7 @@
       height: 100%;
       width: 100%;
       &:hover > .social__icon {
-        fill: #5500f2;
+        fill: #ff9a00;
       }
     }
   }
@@ -31,7 +35,7 @@
     fill: rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
     &:hover {
-      fill: #5500f2;
+      fill: #ff9a00;
     }
     &--footer {
       width: 21px;

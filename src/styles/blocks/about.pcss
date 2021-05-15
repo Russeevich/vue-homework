@@ -1,23 +1,18 @@
 .about {
   &__inner {
     display: flex;
+    justify-content: space-between;
   }
   &__column {
     min-width: 286px;
     display: flex;
     flex-direction: column;
-    &:last-child {
-      flex: 1;
-    }
-    &:first-child {
-      width: 44%;
-    }
   }
   &__img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    align-self: center;
+    align-self: flex-end;
     margin-right: 14px;
   }
   &__info {
