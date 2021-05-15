@@ -743,6 +743,9 @@ img {
   width: 1.3125rem;
   height: 1.3125rem;
 }
+.social__link--footer:hover > .social__icon {
+  fill: #5500f2;
+}
 .social__footer {
   margin-top: 2.5rem;
 }
