@@ -3,6 +3,11 @@
   &__inner {
     display: flex;
     justify-content: space-between;
+    @include phones {
+      height: 100vh;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
   }
   &__copyright {
     white-space: nowrap;
@@ -12,6 +17,9 @@
     font-size: 48px;
     line-height: 65px;
     color: rgba(255, 255, 255, 0.3);
+    @include tablets {
+      height: fit-content;
+    }
   }
   &__author {
     /* margin-left: 56px; */
@@ -31,6 +39,12 @@
       line-height: 30px;
       color: rgba(255, 255, 255, 0.3);
       margin-top: 16px;
+      @include phones {
+        display: flex;
+        & > p {
+          margin-left: 9px;
+        }
+      }
     }
   }
   &__block {
@@ -43,6 +57,22 @@
       font-size: 16px;
       line-height: 30px;
       color: rgba(255, 255, 255, 0.6);
+      max-width: 314px;
+      @include desktop {
+        max-width: 341px;
+      }
+      @include tablets {
+        max-width: 453px;
+      }
+      @include phones {
+        max-width: 259px;
+      }
+    }
+  }
+  &__more {
+    display: flex;
+    @include tablets {
+      flex-direction: column;
     }
   }
   &__phrase {
@@ -64,6 +94,27 @@
       font-size: 16px;
       line-height: 22px;
       color: #ffffff;
+      @include tablets {
+        margin-top: 16px;
+      }
+    }
+    @include tablets {
+      margin-top: 51px;
+      align-self: flex-start;
+    }
+  }
+  &__info {
+    width: 28%;
+    display: flex;
+    justify-content: space-between;
+    @include desktop {
+      flex-direction: column;
+    }
+    @include tablets {
+      justify-content: unset;
+    }
+    @include phones {
+      width: 100%;
     }
   }
 }

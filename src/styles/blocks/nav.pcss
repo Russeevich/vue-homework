@@ -6,6 +6,15 @@
     &:first-child {
       margin-left: 0;
     }
+    @include phones {
+      width: 50%;
+      margin-left: 0;
+    }
+    &--footer {
+      &:nth-child(n + 3) {
+        margin-top: 22px;
+      }
+    }
   }
   &__link {
     text-decoration: none;
@@ -22,6 +31,20 @@
     }
     &--footer {
       white-space: nowrap;
+      &:hover {
+        color: #ff9a00;
+      }
+    }
+  }
+  &__header {
+    @include tablets {
+      display: none;
+    }
+  }
+  &__footer {
+    @include phones {
+      flex-flow: row-reverse;
+      flex-wrap: wrap;
     }
   }
 }
