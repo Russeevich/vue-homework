@@ -50,7 +50,8 @@
       width: 173px;
       cursor: pointer;
       object-fit: cover;
-      &:hover {
+      &:hover,
+      &.active {
         border: 2px solid #ff9a00;
       }
       @include desktop {
@@ -97,6 +98,7 @@
     }
   }
   &__button {
+    cursor: default;
     background: #333c49;
     width: 53px;
     height: 53px;

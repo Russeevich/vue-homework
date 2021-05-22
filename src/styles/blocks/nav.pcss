@@ -11,8 +11,10 @@
       margin-left: 0;
     }
     &--footer {
-      &:nth-child(n + 3) {
-        margin-top: 22px;
+      @include phones {
+        &:nth-child(n + 3) {
+          margin-top: 22px;
+        }
       }
     }
   }

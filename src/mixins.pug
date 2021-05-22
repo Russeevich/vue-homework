@@ -6,14 +6,6 @@ mixin icon(name, className)
 mixin image(path, className)
   img(src=require(`images/${path}`).default class=className)
 
-mixin circle(radius, dashed, offset)
-  svg(viewBox=`0 0 ${radius * 2 + 20} ${radius * 2 + 20}`).skills__circle-shape
-    circle(cx=radius + 10 cy=radius + 10 r=radius).skills__circle.skills__circle--layer--under
-    circle(cx=radius + 10 cy=radius + 10 r=radius stroke="url(#gradient)" transform=`rotate(180 ${radius + 10} ${radius + 10})` style=`stroke-dasharray: ${dashed}; stroke-dashoffset: ${offset}`).skills__circle.skills__circle--layer--above
-    linearGradient(id="gradient" x1="0%" y1="0%" x2="100%" y2="0%")
-      stop(offset="0%" stop-color="#ff4e00")
-      stop(offset="100%" stop-color="#ec9f05")
-
 mixin nav(className)
   - 
     const nav = [
@@ -33,3 +25,5 @@ mixin social(className, social)
       li.social__item(class=`social__item--${className}`)
         a.social__link(class=`social__link--${className}` href=item.href)
           +icon(item.image, `social__icon social__icon--${className}`)
+    - if(className === 'header')
+      li.social__burger
