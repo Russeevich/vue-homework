@@ -3,9 +3,17 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import "swiper/swiper-bundle.css"
 
 const btns = {
+    props: ['progress'],
     template: "#reviews-btns",
     methods: {
-
+        getActive(dir) {
+            switch (dir) {
+                case 'next':
+                    return this.progress >= 1 ? '' : 'active'
+                case 'prev':
+                    return this.progress <= 0 ? '' : 'active'
+            }
+        }
     }
 }
 
@@ -27,6 +35,7 @@ const reviews = {
                     slider.slidePrev()
                     break
             }
+            this.$emit('changeProgress', slider.progress)
         }
     },
     created() {
@@ -54,7 +63,8 @@ new Vue({
                         slidesPerView: 2,
                     }
                 }
-            }
+            },
+            progress: 0
         }
     },
     methods: {
@@ -67,6 +77,9 @@ new Vue({
         },
         slide(val) {
             this.$emit('slide', val)
+        },
+        changeProgress(val) {
+            this.progress = val
         }
     },
     created() {
