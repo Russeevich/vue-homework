@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Главная страница</title>
-    <link href="main.579e747790b925dbdc97.css" rel="stylesheet">
+    <link href="main.41e70dee8e1c26c75617.css" rel="stylesheet">
 </head>
 
 <body>
@@ -160,14 +160,15 @@
             <div class="reviews__inner">
                 <div class="reviews__header">
                     <div class="reviews__title">Что обо мне говорят</div>
-                    <btns @slide="slide"></btns>
+                    <btns :progress="progress" @slide="slide"></btns>
                 </div>
-                <reviews :reviews="reviews" :sliderOptions="sliderOptions"></reviews>
+                <reviews :reviews="reviews" :sliderOptions="sliderOptions" @changeProgress="changeProgress"></reviews>
             </div>
         </script>
         <script type="text/x-template" id="reviews-btns">
-            <div class="reviews__buttons"><button class="reviews__button reviews__button--left" @click="$emit('slide', 'prev')"><svg class="work__click active" viewBox="0 0 11 19" preserveAspectRatio="none"><use xlink:href="sprite.svg#left"></use></svg></button><button class="reviews__button reviews__button--right"
-                    @click="$emit('slide', 'next')"><svg class="work__click active" viewBox="0 0 11 19" preserveAspectRatio="none"><use xlink:href="sprite.svg#right"></use></svg></button></div>
+            <div class="reviews__buttons"><button class="reviews__button reviews__button--left" @click="$emit('slide', 'prev')" :class="getActive('prev')"><svg class="work__click active" viewBox="0 0 11 19" preserveAspectRatio="none"><use xlink:href="sprite.svg#left"></use></svg></button>
+                <button class="reviews__button reviews__button--right" @click="$emit('slide', 'next')" :class="getActive('next')"><svg class="work__click active" viewBox="0 0 11 19" preserveAspectRatio="none"><use xlink:href="sprite.svg#right"></use></svg></button>
+            </div>
         </script>
         <script type="text/x-template" id="reviews-content">
             <div class="reviews__content">
@@ -223,7 +224,7 @@
             </div>
         </section>
     </div>
-    <script src="main.ca250fc16ba29e45bcbb.build.js"></script>
+    <script src="main.7500821c128f1591dbe7.build.js"></script>
 </body>
 
 </html>

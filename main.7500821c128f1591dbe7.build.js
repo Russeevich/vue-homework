@@ -1,4 +1,4 @@
-/*! For license information please see main.ca250fc16ba29e45bcbb.build.js.LICENSE.txt */ ! function(e) {
+/*! For license information please see main.7500821c128f1591dbe7.build.js.LICENSE.txt */ ! function(e) {
     var t = {};
 
     function i(n) { if (t[n]) return t[n].exports; var r = t[n] = { i: n, l: !1, exports: {} }; return e[n].call(r.exports, r, r.exports, i), r.l = !0, r.exports }
@@ -5799,9 +5799,33 @@
                     case "prev":
                         t.slidePrev()
                 }
+                this.$emit("changeProgress", t.progress)
             }
         },
         created: function() { this.$parent.$on("slide", this.slide) }
     };
-    new n.default({ el: "#reviews-block", template: "#reviews-display", components: { reviews: c, btns: { template: "#reviews-btns", methods: {} } }, data: function() { var e; return { reviews: [], sliderOptions: (e = { slidesPerView: 1, spaceBetween: 0, breakpointsInverse: !0 }, l(e, "spaceBetween", 0), l(e, "breakpoints", { 480: { slidesPerView: 2 } }), e) } }, methods: { requireReviewsArr: function(e) { return e.map((function(e) { var t = i(6)("./".concat(e.pic)).default; return e.pic = t, e })) }, slide: function(e) { this.$emit("slide", e) } }, created: function() { this.reviews = this.requireReviewsArr(i(23)) } })
+    new n.default({
+        el: "#reviews-block",
+        template: "#reviews-display",
+        components: {
+            reviews: c,
+            btns: {
+                props: ["progress"],
+                template: "#reviews-btns",
+                methods: {
+                    getActive: function(e) {
+                        switch (e) {
+                            case "next":
+                                return this.progress >= 1 ? "" : "active";
+                            case "prev":
+                                return this.progress <= 0 ? "" : "active"
+                        }
+                    }
+                }
+            }
+        },
+        data: function() { var e; return { reviews: [], sliderOptions: (e = { slidesPerView: 1, spaceBetween: 0, breakpointsInverse: !0 }, l(e, "spaceBetween", 0), l(e, "breakpoints", { 480: { slidesPerView: 2 } }), e), progress: 0 } },
+        methods: { requireReviewsArr: function(e) { return e.map((function(e) { var t = i(6)("./".concat(e.pic)).default; return e.pic = t, e })) }, slide: function(e) { this.$emit("slide", e) }, changeProgress: function(e) { this.progress = e } },
+        created: function() { this.reviews = this.requireReviewsArr(i(23)) }
+    })
 }]);
