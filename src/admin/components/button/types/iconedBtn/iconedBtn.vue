@@ -1,7 +1,7 @@
 <template>
   <button 
     v-on="$listeners"
-    class="button-component"
+    :class="['button-component', {'big' : big}]"
   >{{title}}</button>
 </template>
 
@@ -11,7 +11,8 @@ export default {
     title: {
       type: String,
       default: "Добавить группу"
-    }
+    },
+    big: Boolean
   }
 };
 </script>

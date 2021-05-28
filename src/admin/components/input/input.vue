@@ -2,7 +2,7 @@
   <label
     class="input"
     v-if="fieldType === 'input'"
-    :class="[{'input_labeled' : !!title, 'no-side-paddings' : noSidePaddings}, iconClass, {'error' : !!errorMessage}]"
+    :class="[{'input_labeled' : !!title, 'no-side-paddings' : noSidePaddings}, iconClass, {'error' : !!errorMessage}, {'blocked' : blocked}, {'center': center}]"
   >
     <div class="title" v-if="title">{{title}}</div>
     <input
@@ -10,6 +10,7 @@
       v-bind="$attrs"
       :value="value"
       @input="$emit('input', $event.target.value)"
+      :disabled="blocked"
     />
     <div class="input__error-tooltip">
       <tooltip :text="errorMessage"></tooltip>
@@ -56,7 +57,9 @@ export default {
       type: String,
       default: "",
       validator: value => ["", "user", "key"].includes(value)
-    }
+    },
+    blocked: Boolean,
+    center: Boolean
   },
   computed: {
     iconClass() {

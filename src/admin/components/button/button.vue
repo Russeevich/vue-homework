@@ -18,7 +18,7 @@ export default {
     default: () => import("./types/defaultBtn"),
     square: () => import("./types/squareBtn"),
     iconed: () => import("./types/iconedBtn"),
-    round: () => import("./types/roundBtn"),
+    round: () => import("./types/roundBtn")
   }
 }
 </script>

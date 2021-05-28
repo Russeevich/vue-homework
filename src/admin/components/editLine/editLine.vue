@@ -11,7 +11,7 @@
         <app-input
           placeholder="Название новой группы"
           :value="value"
-          :errorText="errorText"
+          :errorMessage="errorMessage"
           @input="$emit('input', $event)"
           @keydown.native.enter="onApprove"
           autofocus="autofocus"
@@ -23,7 +23,7 @@
           <icon symbol="tick" @click="onApprove"></icon>
         </div>
         <div class="button-icon">
-          <icon symbol="cross" @click="$emit('remove')"></icon>
+          <icon symbol="cross" @click="onRemove"></icon>
         </div>
       </div>
     </div>
@@ -37,25 +37,41 @@ export default {
       type: String,
       default: ""
     },
-    errorText: {
-      type: String,
-      default: ""
-    },
-    blocked: Boolean
+    blocked: Boolean,
+    edit: Boolean
   },
   data() {
     return {
-      editmode: false,
-      title: this.value
+      editmode: this.edit,
+      title: this.value,
+      errorMessage: ''
     };
   },
   methods: {
     onApprove() {
       if (this.title.trim() === this.value.trim()) {
         this.editmode = false;
-      } else {
         this.$emit("approve", this.value);
+      } else if(this.value.length > 1) {
+        this.$emit("approve", this.value);
+        this.editmode = false
+      } else {
+        this.errorMessage = ''
+        if(this.value < 2){
+          this.errorMessage = 'Больше 1 символа'
+          console.log(this.title.length)
+          return
+        }
       }
+    },
+    onRemove(){
+      this.$emit('remove')
+      this.editmode = false
+    }
+  },
+  watch: {
+    editmode(value){
+      this.$emit('mode', value)
     }
   },
   components: {
