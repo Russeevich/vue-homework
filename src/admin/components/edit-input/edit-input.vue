@@ -44,8 +44,9 @@ export default {
                this.title = this.oldTitle
         },
         approve(value){
-            if(value.trim() === "" || !value.length)
-                this.$emit('delete')
+            if(value.trim() === "" || !value.length){
+                return
+            }
             else {
                 this.$emit('addcard', {value, id: this.id})
                 this.oldTitle = this.title

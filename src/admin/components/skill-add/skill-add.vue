@@ -38,11 +38,11 @@ export default {
                 title: null,
                 percent: null
             }
-            if(this.title.length < 2 || this.percentage < 0 || this.percentage > 100){
+            if(this.title.length < 2 || this.percentage < 0 || this.percentage > 100 || !this.percentage.toString().length){
                 if(this.title.length < 2){
                     this.errorMessage.title = 'Минимальная длина 2 символа'
                 }
-                if(this.percentage < 0 || this.percentage > 100){
+                if(this.percentage < 0 || this.percentage > 100 || !this.percentage.toString().length){
                     this.errorMessage.percent = 'Не может быть < 0 и > 100'
                 }
                 return

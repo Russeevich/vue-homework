@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     onApprove() {
-      if (this.title.trim() === this.value.trim()) {
+      if (this.title.trim() === this.value.trim() && this.value.length) {
         this.editmode = false;
         this.$emit("approve", this.value);
       } else if(this.value.length > 1) {
@@ -57,9 +57,8 @@ export default {
         this.editmode = false
       } else {
         this.errorMessage = ''
-        if(this.value < 2){
+        if(this.value.length < 2){
           this.errorMessage = 'Больше 1 символа'
-          console.log(this.title.length)
           return
         }
       }
