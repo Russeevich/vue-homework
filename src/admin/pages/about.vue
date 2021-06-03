@@ -49,9 +49,13 @@ export default {
     }
   },
   mounted(){
-      this.getUserInfo()
-      this.loadCategory()
-      setTimeout(() => this.loadSkill(),500)
+      this.getUserInfo().then(() => {
+        setTimeout(() => {
+          this.loadCategory().then(() =>{
+          this.loadSkill()
+        })
+        },1000)
+      })
   },
   computed: {
     ...mapGetters([
@@ -62,8 +66,7 @@ export default {
     }
   },
   methods:{
-    ...mapActions(['loadCategory', 'getUserInfo', 'loadSkill']),
-    
+    ...mapActions(['loadCategory', 'getUserInfo', 'loadSkill'])
   }
 }
 </script>
