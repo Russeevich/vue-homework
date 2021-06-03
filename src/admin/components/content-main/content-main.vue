@@ -8,6 +8,7 @@
                             edit=true 
                             slot="title"
                             @addcard="addCard"
+                            @delete="$emit('delete')"
                         )
                         .content__main--block(slot="content")
                             ul.content__main--skills
