@@ -10,10 +10,11 @@
                 button(class="header__exit header__exit--second") {{button}}
                 a(class="header__title") {{title}}
             .header__block--right
-                button(class="header__exit") {{button}}
+                button(class="header__exit" @click="logout") {{button}}
 
 </template>
 <script>
+import { mapMutations } from 'vuex'
 export default {
     props: {
         size: {
@@ -39,6 +40,9 @@ export default {
     },
     components: {
         user: () => import('../user')
+    },
+    methods: {
+        ...mapMutations(['logout'])
     }
 }
 </script>

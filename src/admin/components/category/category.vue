@@ -5,29 +5,26 @@
             slot="title" 
             :value="category.caption"
             :id="category.id"
-            @addcard="$emit('addcard', $event)"
+            @addcard="updateCard"
             @mode="changeMode"
         ).category--edit
         .category--block(slot="content")
             ul.category--skills
-                li(v-for="skill in category.skills" :key="skill.id").category--skill
+                li(v-for="skill in getSkillsParent(category.id)" :key="skill.id").category--skill
                     skills(
                         :parentId="category.id"
                         :id="skill.id"
                         :name="skill.name"
                         :percent="skill.percent"
-                        @delSkill="$emit('delSkill', $event)"
-                        @saveSkill="$emit('saveSkill', $event)"
                     )
             skillAdd(
                 :parentId="category.id"
-                @addSkill="$emit('addSkill', $event)"
                 :blocked="edit"
             )
 </template>
 
 <script>
-
+import { mapActions, mapGetters } from 'vuex'
 export default {
     props: {
         category: {
@@ -35,6 +32,9 @@ export default {
             default: () => {},
             required: true
         }
+    },
+    computed: {
+        ...mapGetters(['getSkillsParent'])
     },
     components:{
         card: () => import('../card'),
@@ -48,8 +48,13 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['updCategory']),
         changeMode(value){
             this.edit = value
+        },
+        updateCard(event){
+            console.log(event)
+            this.updCategory({id: event.id, title: event.value})
         }
     }
 }

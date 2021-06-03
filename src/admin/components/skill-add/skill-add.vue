@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
     props: {
@@ -33,6 +34,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['saveSkill']),
         addSkill(){
             this.errorMessage = {
                 title: null,
@@ -49,9 +51,9 @@ export default {
             }
 
             if(this.parentId >= 0){
-                this.$emit('addSkill', {
-                    parentId: this.parentId,
-                    name: this.title,
+                this.saveSkill({
+                    category: this.parentId,
+                    title: this.title,
                     percent: this.percentage
                 })
                 this.title = ''

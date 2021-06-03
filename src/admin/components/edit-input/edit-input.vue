@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
     props:{
@@ -32,16 +33,17 @@ export default {
     },
     data(){
         return {
-            title: this.value,
-            oldTitle: this.value
+            title: this.value
         }
     },
     methods: {
+        ...mapActions(['deleteCategory']),
         remove(){
-            if(this.title.trim() === "" && this.id < 0)
+            console.log(this.id)
+            if(this.id < 0)
                 this.$emit('delete')
             else 
-               this.title = this.oldTitle
+                this.deleteCategory(this.id)
         },
         approve(value){
             if(value.trim() === "" || !value.length){
@@ -49,7 +51,6 @@ export default {
             }
             else {
                 this.$emit('addcard', {value, id: this.id})
-                this.oldTitle = this.title
             }
         }
     }

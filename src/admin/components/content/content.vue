@@ -11,9 +11,6 @@
                 :onChange="onChange"
                 @delete="remove"
                 @addcard="addcard"
-                @delSkill="$emit('delSkill', $event)"
-                @saveSkill="$emit('saveSkill', $event)"
-                @addSkill="$emit('addSkill', $event)"
             )
 </template>
 
@@ -46,9 +43,8 @@ export default {
         remove(){
             this.onChange = false
         },
-        addcard(value){
+        addcard(){
             this.onChange = false
-            this.$emit('addcard', value)
         }
     }
 }

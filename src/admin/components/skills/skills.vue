@@ -5,13 +5,14 @@
         .skills__actions
             template(v-if="blocked")
                 icon(grayscale symbol="pencil" @click="unBlocked").skills__action
-                icon(grayscale symbol="trash" @click="$emit('delSkill', {id, parentId})").skills__action
+                icon(grayscale symbol="trash" @click="delSkill").skills__action
             template(v-else)
                 icon(symbol="tick" @click="saveSkill").skills__action
                 icon(symbol="cross" @click="oldValue").skills__action
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
     props: {
@@ -50,6 +51,7 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['deleteSkill', 'updSkill']),
         unBlocked(){
             this.blocked = false
         },
@@ -71,15 +73,15 @@ export default {
             this.blocked = true
             this.oldPercent = this.percentage
             this.oldTitle = this.title
-            this.$emit('saveSkill', {
-                parentId: this.parentId, 
-                value: {
-                        id:this.id,
-                        name: this.title, 
-                        percent: parseInt(this.percentage)
-                    } 
-                }
-            )
+            this.updSkill({
+                    id: this.id,
+                    title: this.title,
+                    percent: this.percentage,
+                    category: this.parentId,
+                })
+        },
+        delSkill(){
+            this.deleteSkill(this.id)
         },
         oldValue(){
             this.blocked = true

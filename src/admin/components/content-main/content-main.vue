@@ -7,8 +7,7 @@
                         editInput(
                             edit=true 
                             slot="title"
-                            @delete="$emit('delete')"
-                            @addcard="$emit('addcard', $event)"
+                            @addcard="addCard"
                         )
                         .content__main--block(slot="content")
                             ul.content__main--skills
@@ -19,15 +18,13 @@
                 li(v-for="item in category" :key="item.id").content__main--item
                     category(
                         :category="item"
-                        @delSkill="$emit('delSkill', $event)"
-                        @saveSkill="$emit('saveSkill', $event)"
-                        @addSkill="$emit('addSkill', $event)"
                     )
 
 
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
     props:{
@@ -46,6 +43,13 @@ export default {
         skills: () => import('../skills'),
         skillAdd: () => import('../skill-add'),
         category: () => import('../category')
+    },
+    methods: {
+        ...mapActions(['saveCategory']),
+        addCard(value){
+            this.saveCategory(value.value)
+            this.$emit('addcard', value)
+        }
     }
 }
 
