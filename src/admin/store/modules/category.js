@@ -1,4 +1,4 @@
-import { getCat, savingCat, getSkills, createSkill, removeSkill, updateSkill, removeCategory, updateCategory } from '../../request';
+import axios from '../../request'
 
 const category = {
     state: {
@@ -55,62 +55,70 @@ const category = {
         }
     },
     actions: {
-        loadCategory: (store) => {
-            getCat().then(data => {
+        async loadCategory(store) {
+            try {
+                const data = await axios.get('/categories')
                 store.commit('loadedCat', data.data)
-            }).catch(err => {
+            } catch (err) {
                 console.log(`Возникла ошибка: ${err.message}`)
-            })
+            }
         },
-        saveCategory: (store, title) => {
-            savingCat(title).then(data => {
+        async saveCategory(store, title) {
+            try {
+                const data = await axios.post('/categories', { title })
                 store.commit('saveCategory', data.data)
-            }).catch(err => {
+            } catch (err) {
                 console.log(`Возникла ошибка: ${err.message}`)
-            })
+            }
         },
-        deleteCategory: (store, id) => {
-            removeCategory(id).then(() => {
+        async deleteCategory(store, id) {
+            try {
+                await axios.delete(`/categories/${id}`)
                 store.commit('delCategory', id)
-            }).catch(err => {
+            } catch (err) {
                 console.log(err.message)
-            })
+            }
         },
-        updCategory: (store, cat) => {
-            updateCategory(cat).then(() => {
+        async updCategory(store, cat) {
+            try {
+                await axios.post(`/categories/${cat.id}`, { title: cat.title })
                 store.commit('updateCat', cat)
-            }).catch(err => {
+            } catch (err) {
                 console.log(err.message)
-            })
+            }
         },
-        saveSkill: (store, skill) => {
-            createSkill(skill).then(data => {
+        async saveSkill(store, skill) {
+            try {
+                const data = await axios.post('/skills', skill)
                 store.commit('createSkillView', data.data)
-            }).catch(err => {
+            } catch (err) {
                 console.log(err.message)
-            })
+            }
         },
-        loadSkill: (store) => {
-            getSkills(store.getters.getId).then(skill => {
-                console.log(skill.data)
+        async loadSkill(store) {
+            try {
+                const skill = await axios.get(`/skills/${await store.getters.getId}`)
                 store.commit('setSkills', skill.data)
-            }).catch(err => {
+            } catch (err) {
                 console.log(err.message)
-            })
+            }
         },
-        deleteSkill: (store, id) => {
-            removeSkill(id).then(() => {
+        async deleteSkill(store, id) {
+            try {
+                await axios.delete(`/skills/${id}`)
                 store.commit('delSkill', id)
-            }).catch(err => {
+            } catch (err) {
                 console.log(err.message)
-            })
+            }
         },
-        updSkill: (store, payload) => {
-            updateSkill(payload).then(() => {
+        async updSkill(store, payload) {
+            const { id, title, category, percent } = payload
+            try {
+                axios.post(`/skills/${id}`, { title, category, percent })
                 store.commit('updateSkillValue', payload)
-            }).catch(err => {
+            } catch (err) {
                 console.log(err.message)
-            })
+            }
         }
     },
     getters: {

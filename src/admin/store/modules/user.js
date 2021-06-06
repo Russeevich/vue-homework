@@ -1,5 +1,4 @@
-import { login, getUser } from '../../request'
-import router from '../../router'
+import axios from '../../request'
 
 const user = {
     state: {
@@ -10,31 +9,40 @@ const user = {
         setToken(state, token) {
             state.token = token
             localStorage.setItem('token', token)
-            router.push({ path: '/' })
         },
         logout(state) {
             state.token = ''
             localStorage.setItem('token', '')
-            router.push({ path: '/login' })
         },
         saveId(state, id) {
             state.id = id
         }
     },
     actions: {
-        getToken: (store, user) => {
-            login(user).then(data => {
+        async getToken(store, user) {
+            try {
+                const data = await axios.post('/login', user)
                 store.commit('setToken', data.data.token)
-            }).catch(err => {
+            } catch (err) {
                 console.log(err.message)
-            })
+            }
         },
-        getUserInfo: (store) => {
-            getUser().then(data => {
+        async getUserInfo(store) {
+            axios.defaults.headers = { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            try {
+                const data = await axios.get('/user')
                 store.commit('saveId', data.data.user.id)
-            }).catch(err => {
+            } catch (err) {
                 console.log(err.message)
-            })
+            }
+        },
+        async getLogout(store) {
+            try {
+                await axios.post('/logout')
+                store.commit('logout')
+            } catch (err) {
+                console.log(err.message)
+            }
         }
     },
     getters: {

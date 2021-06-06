@@ -16,6 +16,7 @@
 
 <script>
 import {mapActions} from 'vuex';
+import router from '../../router';
 export default {
     components: {
         appInput: () => import('../input'),
@@ -47,7 +48,9 @@ export default {
                     this.error.password = 'Пароль не может быть пустым'
                 return
             }
-            this.getToken(this.user)
+            this.getToken(this.user).then(() => {
+                router.push({ path: '/' })
+            })
         }
     }
 }

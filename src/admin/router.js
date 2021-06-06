@@ -5,12 +5,16 @@ Vue.use(VueRouter)
 
 import about from './pages/about.vue'
 import login from './pages/login.vue'
+import topmenu from './components/topmenu'
 import { store } from './store'
 
 const routes = [{
         name: 'main',
         path: '/',
-        component: about,
+        components: {
+            default: about,
+            header: topmenu
+        },
         meta: {
             requiresAuth: true
         }

@@ -14,7 +14,8 @@
 
 </template>
 <script>
-import { mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
+import router from '../../router'
 export default {
     props: {
         size: {
@@ -42,7 +43,12 @@ export default {
         user: () => import('../user')
     },
     methods: {
-        ...mapMutations(['logout'])
+        ...mapActions(['getLogout']),
+        logout(){
+            this.getLogout().then(() =>{
+                router.push({ path: '/login' })
+            })
+        }
     }
 }
 </script>

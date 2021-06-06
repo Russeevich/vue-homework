@@ -7,10 +7,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+require("babel-polyfill");
 
 module.exports = (env, argv) => {
     const isProductionBuild = argv.mode === "production";
-    const publicPath = "/";
+    const publicPath = "/vue-homework/";
 
     const pcss = {
         test: /\.(p|post|)css$/,
@@ -32,7 +33,7 @@ module.exports = (env, argv) => {
         exclude: /node_modules/,
         options: {
             presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-syntax-dynamic-import"],
+            plugins: ["@babel/plugin-syntax-dynamic-import", "transform-regenerator"],
         },
     };
 
@@ -86,6 +87,7 @@ module.exports = (env, argv) => {
         entry: {
             main: "./src/main.js",
             admin: "./src/admin/main.js",
+            app: ['babel-polyfill', "./src/admin/main.js"]
         },
         output: {
             path: path.resolve(__dirname, "./dist"),
