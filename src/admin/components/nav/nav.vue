@@ -1,9 +1,9 @@
 <template lang="pug">
     .nav-component
         .container.container--navigation
-            ul.nav__list
-                li(v-for="(link,index) in links" :key="index" :class="getActive(index)").nav__item
-                    a(class="nav__link" :href="link.href") {{link.title}}
+            div.nav__list
+                router-link(v-for="(link,index) in links" :key="index" :to="link.href" class="nav__link" exact).nav__item
+                    div(class="nav__title") {{link.title}}
 
 </template>
 

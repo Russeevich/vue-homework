@@ -5,6 +5,7 @@
                 :title="title"
                 :onChange="onChange"
                 @add="add"
+                create
             )
             contentMain(
                 :category="category"

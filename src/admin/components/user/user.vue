@@ -4,7 +4,9 @@
             v-bind="$attrs"
             :size="size"
         )
-        h4(class="user__name") {{name}}
+        .user__info
+            h4(:class="['user__name', {'user__black': position}]") {{name}}
+            h2(class="user__position" v-if="position") {{position}}
 </template>
 
 <script>
@@ -17,6 +19,10 @@ export default {
         name:{
             type: String,
             default: 'Иван Иванов'
+        },
+        position: {
+            type: String,
+            default: ''
         }
     },
     components: {

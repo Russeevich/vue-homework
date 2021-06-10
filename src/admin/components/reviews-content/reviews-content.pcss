@@ -1,0 +1,97 @@
+@import "../../../styles/mixins.pcss";
+.reviews__content {
+  &-component {
+  }
+  &--list {
+    margin-top: 29px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: calc(100vh - 298px);
+    gap: 28px;
+    @include tablets {
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+  }
+  &--item {
+    width: 31.67%;
+    max-height: 385px;
+    min-height: 385px;
+    @include tablets {
+      width: 48%;
+    }
+    @include phones {
+      width: 100%;
+      min-height: auto;
+      max-height: auto;
+    }
+  }
+  &--edit {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &--btns {
+    display: flex;
+    justify-content: space-between;
+    @include phones {
+      margin-top: 28px;
+    }
+  }
+  &--main {
+    display: flex;
+    @include phones {
+      flex-direction: column;
+    }
+  }
+  &--block {
+    flex: 1;
+    max-width: 612px;
+    &:first-child {
+      flex: 0 1 220px;
+      margin-right: 31px;
+      @include phones {
+        margin-right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+  &--create {
+    @include tablets {
+      min-height: 710px;
+    }
+  }
+  &--input {
+    width: 49%;
+    &s {
+      margin-bottom: 37px;
+      gap: 29px;
+      display: flex;
+      flex: 1;
+      @include tablets {
+        flex-direction: column;
+      }
+    }
+    @include tablets {
+      width: 70%;
+    }
+    @include phones {
+      width: 100%;
+    }
+  }
+  &--button-block {
+    margin-top: 33px;
+    display: flex;
+    justify-content: flex-end;
+    @include tablets {
+      margin-top: 36px;
+    }
+    @include phones {
+      justify-content: center;
+    }
+  }
+}

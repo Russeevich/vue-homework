@@ -1,6 +1,6 @@
 <template lang="pug">
   contents(
-  :title="getTitle",
+  title="Обо мне",
   :category="getCategory"
   )
 </template>
@@ -10,18 +10,6 @@ import {mapActions, mapGetters} from 'vuex'
 export default {
   components: {
     contents: () => import('../components/content')
-  },
-  data() {
-    return {
-      nav:{
-        activeIndex: 0,
-        links: [
-          {title: 'Обо мне', href: 'admin/about'},
-          {title: 'Работы', href: 'admin/works'},
-          {title: 'Отзывы', href: 'admin/reviews'}
-        ]
-      }
-    }
   },
   mounted(){
       this.getUserInfo().then(() => {
@@ -35,10 +23,7 @@ export default {
   computed: {
     ...mapGetters([
       'getCategory'
-    ]),
-    getTitle(){
-      return this.nav.links[this.activeIndex]
-    }
+    ])
   },
   methods:{
     ...mapActions(['loadCategory', 'getUserInfo', 'loadSkill'])

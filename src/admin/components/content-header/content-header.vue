@@ -3,7 +3,7 @@
         .container.container__content--header
             h4(class="content__header--title") Блок «{{title}}»
             iconed-btn(
-                v-if="onChange===false"
+                v-if="onChange===false && create === true"
                 type="iconed" 
                 title="Добавить группу"
                 @click="$emit('add', $event)"
@@ -18,6 +18,10 @@
                 default: 'Обо мне'
             },
             onChange:{
+                type: Boolean,
+                default: false
+            },
+            create: {
                 type: Boolean,
                 default: false
             }

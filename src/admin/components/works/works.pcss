@@ -1,0 +1,70 @@
+@import "../../../styles/mixins.pcss";
+.works {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  &__header {
+    position: relative;
+  }
+  &__tags {
+    position: absolute;
+    right: 16px;
+    bottom: 14px;
+  }
+  &__img {
+    max-height: 190px;
+    width: 100%;
+    object-fit: cover;
+  }
+  &__tag {
+    padding: 8px 18px;
+    background: #f3f6f9;
+    border-radius: 40px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    &s {
+      display: flex;
+      gap: 8px;
+    }
+  }
+  &__content {
+    flex: 1;
+    background: #ffffff;
+    padding: 34px 34px 44px 27px;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.22), 0 5px 5px rgba(0, 0, 0, 0.22);
+  }
+  &__caption {
+    margin-bottom: 6px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: #414c63;
+  }
+  &__text {
+    margin-bottom: 26px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: rgba(65, 76, 99, 0.5);
+  }
+  &__link {
+    margin-bottom: 41px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #383bcf;
+  }
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+  }
+}

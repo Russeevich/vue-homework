@@ -1,6 +1,6 @@
 <template lang="pug">
     .edit__tags-component
-        appInput(v-model="tags" noSidePaddings)
+        appInput(v-model="tags" noSidePaddings :title="title")
         ul.edit__tags--list
             li(v-for="(item, index) of tagsToArray" :key="`${item} ${index}`" v-if="item").edit__tags--item
                 tag(close :title="item" @remove="removeTag" :id="index")
@@ -8,13 +8,19 @@
 
 <script>
     export default {
+        props: {
+            title:{
+                type: String,
+                default: ''
+            }
+        },
         components: {
             appInput: () => import('../input'),
             tag: () => import('../tag')
         },
         data(){
             return {
-                tags: "123, 123, 123"
+                tags: ""
             }
         },
         computed: {

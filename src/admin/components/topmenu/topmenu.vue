@@ -35,9 +35,9 @@ export default {
             nav:{
                 activeIndex: 0,
                 links: [
-                    {title: 'Обо мне', href: 'admin/about'},
-                    {title: 'Работы', href: 'admin/works'},
-                    {title: 'Отзывы', href: 'admin/reviews'}
+                    {title: 'Обо мне', href: '/'},
+                    {title: 'Работы', href: '/works'},
+                    {title: 'Отзывы', href: '/reviews'}
                 ]
             }
         }
