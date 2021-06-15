@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import "swiper/swiper-bundle.css"
+import axios from 'axios'
 
 const btns = {
     props: ['progress'],
@@ -83,6 +84,9 @@ new Vue({
         }
     },
     created() {
-        this.reviews = this.requireReviewsArr(require('./data/reviews.json'))
+        axios.get('https://webdev-api.loftschool.com/reviews/456').then(data => {
+            console.log(data.data)
+            this.reviews = data.data.map(item => ({ id: item.id, name: item.author, pic: `https://webdev-api.loftschool.com/${item.photo}`, text: item.text }))
+        })
     }
 })

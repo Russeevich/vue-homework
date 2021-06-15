@@ -3,26 +3,38 @@
         .works__header
             img.works__img(:src="src")
             ul.works__tags
-                li.works__tag html
-                li.works__tag html
-                li.works__tag html
+                li(v-for="(tag,index) in techs" :key="index" v-if="tag").works__tag {{tag}}
         .works__content
-            .works__caption Сайт школы образования
-            .works__text Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-            .works__link http://loftschool.ru
+            .works__info
+                .works__caption {{work.title}}
+                .works__text {{work.description}}
+                a(:href="work.link").works__link {{work.link}}
             .works__btns
-                icon(title="Править" symbol="pencil")
-                icon(title="Удалить" symbol="cross")
+                icon(title="Править" symbol="pencil" @click="$emit('changeCard', work.id)")
+                icon(title="Удалить" symbol="cross" @click="$emit('removeCard', work.id)")
 
 
 </template>
 
 <script>
-import img from '../../images/background.png'
 export default {
-    data(){
-        return{
-            src: img
+    props: {
+        work: {
+            type: Object,
+            default: {},
+            required: true
+        }
+    },
+    computed: {
+        src(){
+            return `https://webdev-api.loftschool.com/${this.work.photo}`
+        },
+        techs(){
+            return this.work.techs.split(',').filter(item => item !== '' && item !== ' ')
+        },
+        getTags(index){
+            console.log(index)
+            return tag.trim().split(' ').join('').length > 0
         }
     },
     components: {

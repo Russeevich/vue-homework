@@ -1,6 +1,6 @@
 <template lang="pug">
     .edit__tags-component
-        appInput(v-model="tags" noSidePaddings :title="title")
+        appInput(v-model="tags" noSidePaddings :title="title" v-bind="$attrs"  @input="$emit('input', $event)")
         ul.edit__tags--list
             li(v-for="(item, index) of tagsToArray" :key="`${item} ${index}`" v-if="item").edit__tags--item
                 tag(close :title="item" @remove="removeTag" :id="index")
@@ -12,6 +12,10 @@
             title:{
                 type: String,
                 default: ''
+            },
+            valueInput:{
+                type: String,
+                default: ''
             }
         },
         components: {
@@ -20,19 +24,24 @@
         },
         data(){
             return {
-                tags: ""
+                tags: this.valueInput
+            }
+        },
+        watch: {
+            valueInput(val){
+                this.tags = val
             }
         },
         computed: {
             tagsToArray(){
-                return this.tags.trim().split(',').map(item => {
+                return this.valueInput.trim().split(',').map(item => {
                     return item.trim().length > 0 ? item : '' ;
                 })
             }
         },
         methods: {
             removeTag(id){
-                this.tags = this.tagsToArray.filter((_, index) => index !== id).join(', ')
+                this.valueInput = this.tagsToArray.filter((_, index) => index !== id).join(', ')
             }
         }
     }

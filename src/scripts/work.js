@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import axios from 'axios'
 
 const thumbs = {
     props: ['works', 'currentIndex'],
@@ -38,7 +39,7 @@ const info = {
     },
     computed: {
         tagsArray() {
-            return this.currentImage.skills.split(",")
+            return this.currentImage ? this.currentImage.skills.split(",") : []
         }
     }
 }
@@ -71,13 +72,6 @@ new Vue({
         }
     },
     methods: {
-        requireImageArr(data) {
-            return data.map(item => {
-                const image = require(`../images/content/${item.photo}`).default
-                item.photo = image
-                return item
-            })
-        },
         slide(dir) {
             switch (dir) {
                 case 'next':
@@ -101,6 +95,9 @@ new Vue({
         }
     },
     created() {
-        this.works = this.requireImageArr(require('./data/works.json'))
+        axios.get(`https://webdev-api.loftschool.com/works/456`).then(data => {
+            this.works = data.data.map(item => ({ title: item.title, id: item.id, link: item.link, desc: item.description, photo: `https://webdev-api.loftschool.com/${item.photo}`, skills: item.techs }))
+            console.log(this.works)
+        })
     }
 })

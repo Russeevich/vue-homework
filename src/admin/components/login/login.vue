@@ -11,7 +11,7 @@
                     label.login__label Пароль
                     appInput(icon="key" type="password" v-model="user.password" :errorMessage="error.password").login__input
                 .login__btns
-                    appButton(title="отправить").login__btn
+                    appButton(title="отправить" typeAttr="button" types="submit").login__btn
 </template>
 
 <script>

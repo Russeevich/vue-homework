@@ -11,22 +11,18 @@ export default {
   components: {
     contents: () => import('../components/content')
   },
-  mounted(){
-      this.getUserInfo().then(() => {
-        setTimeout(() => {
+  created(){
+    setTimeout(() => {
           this.loadCategory().then(() =>{
           this.loadSkill()
         })
-        },1000)
-      })
+    },1000)
   },
   computed: {
-    ...mapGetters([
-      'getCategory'
-    ])
+    ...mapGetters(['getCategory'])
   },
   methods:{
-    ...mapActions(['loadCategory', 'getUserInfo', 'loadSkill'])
+    ...mapActions(['loadCategory', 'loadSkill'])
   }
 }
 </script>

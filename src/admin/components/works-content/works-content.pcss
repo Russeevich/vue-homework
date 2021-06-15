@@ -11,13 +11,6 @@
   &__card {
     min-height: 780px;
   }
-  &__edit {
-    display: flex;
-    gap: 34px;
-    @include tablets {
-      flex-direction: column;
-    }
-  }
   &__content {
     margin-top: 26px;
     display: flex;
@@ -39,11 +32,18 @@
   }
   &__item {
     width: 31.8%;
+    min-height: 560px;
+    &.works__first {
+      @include phones {
+        min-height: auto;
+      }
+    }
     @include tablets {
       width: 48%;
     }
     @include phones {
       width: 100%;
+      min-height: 480px;
     }
   }
 }

@@ -16,10 +16,14 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     components: {
         headerComp: () => import('../header'),
         navigation: () => import('../nav'),
+    },
+    mounted(){
+        this.getUserInfo()
     },
     data() {
         return {
@@ -41,6 +45,9 @@ export default {
                 ]
             }
         }
+    },
+    methods: {
+        ...mapActions(['getUserInfo'])
     }
 }
 </script>

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import axios from 'axios'
 
 const skillsItem = {
     props: ['skill'],
@@ -40,6 +41,8 @@ new Vue({
         }
     },
     created() {
-        this.skills = require('./data/skills.json')
+        axios.get('https://webdev-api.loftschool.com/categories/456').then(data => {
+            this.skills = data.data
+        })
     }
 })

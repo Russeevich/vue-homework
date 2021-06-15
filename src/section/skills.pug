@@ -11,7 +11,7 @@ section.skills
             #skills-component
 
 script(type="text/x-template")#skills-list
-    <div>
+    <div v-if="skills.length">
         .skills__block(v-for="category in skills" :key="category.id")
             skills-row(:category="category")
     </div>

@@ -1,0 +1,37 @@
+@import "../../../styles/mixins.pcss";
+.reviews {
+  &--item {
+    width: 31.67%;
+    max-height: 385px;
+    min-height: 385px;
+    @include tablets {
+      width: 48%;
+    }
+    @include phones {
+      width: 100%;
+      min-height: auto;
+      max-height: auto;
+    }
+  }
+  &--edit {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &--btns {
+    display: flex;
+    justify-content: space-between;
+    @include phones {
+      margin-top: 28px;
+    }
+  }
+  &--text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+    color: rgba(65, 76, 99, 0.7);
+  }
+}

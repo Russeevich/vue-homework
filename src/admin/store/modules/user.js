@@ -22,9 +22,10 @@ const user = {
         async getToken(store, user) {
             try {
                 const data = await axios.post('/login', user)
-                store.commit('setToken', data.data.token)
+                console.log(data)
+                store.commit('setToken', await data.data.token)
             } catch (err) {
-                console.log(err.message)
+                console.log(err)
             }
         },
         async getUserInfo(store) {

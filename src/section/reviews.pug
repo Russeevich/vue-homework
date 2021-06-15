@@ -4,13 +4,14 @@ section.reviews
 
 script(type="text/x-template")#reviews-display
     .reviews__inner
-        .reviews__header 
+        .reviews__header
             .reviews__title Что обо мне говорят
             btns(
                 :progress="progress"
                 @slide="slide"
             )
         reviews(
+            v-if="reviews.length"
             :reviews="reviews"
             :sliderOptions="sliderOptions"
             @changeProgress="changeProgress"

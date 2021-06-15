@@ -5,7 +5,7 @@ section.work
             #preview-block
 
 script(type="text/x-template")#work-display
-    .work__block
+    .work__block(v-if="works.length")
         preview(
             :currentImage="currentImage",
             :works="works",
@@ -18,10 +18,10 @@ script(type="text/x-template")#work-display
         )
 
 script(type="text/x-template")#work-preview
-    .work__left(:data-slide="currentImage.id")
+    .work__left(:data-slide="currentIndex + 1")
         .work__images
             .work__slider
-                img(:src="currentImage.photo").work__img
+                img( v-if="currentImage" :src="currentImage.photo").work__img
                 thumbs(
                     :works="works",
                     :currentIndex="currentIndex",
@@ -36,8 +36,8 @@ script(type="text/x-template")#work-preview
 
 script(type="text/x-template")#work-thumbs
     ul.work__list 
-        li(v-for="(work,index) in works" :key="work.id").work__item
-            img(:src="work.photo" :class="getActiveFrame(index)" @click="$emit('slideTo', index)").work__img--small
+        li(v-for="(work,index) in works" :key="work.id" v-if="work").work__item
+            img(v-if="work" :src="work.photo" :class="getActiveFrame(index)" @click="$emit('slideTo', index)").work__img--small
 
 script(type="text/x-template")#work-btns
     .work__slide
@@ -47,12 +47,12 @@ script(type="text/x-template")#work-btns
             +icon('left', 'work__click')
 
 script(type="text/x-template")#work-info
-    .work__right
+    .work__right(v-if="currentImage")
         tags(
             :tags="tagsArray"
         )
         .work__info
-            .work__caption {{currentImage.title}}
+            .work__caption() {{currentImage.title}}
             .work__subcaption {{currentImage.desc}}
             .work__icons 
                 +icon('link', 'work__icon')

@@ -27,10 +27,14 @@
     line-height: 20px;
     &s {
       display: flex;
+      flex-wrap: wrap;
       gap: 8px;
     }
   }
   &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex: 1;
     background: #ffffff;
     padding: 34px 34px 44px 27px;
@@ -55,13 +59,13 @@
     color: rgba(65, 76, 99, 0.5);
   }
   &__link {
-    margin-bottom: 41px;
     font-family: Open Sans;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 22px;
     color: #383bcf;
+    text-decoration: none;
   }
   &__btns {
     display: flex;
