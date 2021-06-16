@@ -3,7 +3,7 @@
         .container.container--content.container--works
             content-header(title="Работы")
             card.works__card(v-if="onChange")
-                h4(slot="title").works__title Редактирование работы
+                h4(slot="title").works__title {{changeInfo ? 'Редактирование работы': 'Добавление работы'}}
                 .works__edit(slot="content")
                     works-form(@cancle="change" :card="card" :photo="getPhoto" :changeInfo="changeInfo")
             ul.works__content
@@ -63,6 +63,7 @@ export default {
             if(this.onChange)
                 window.scrollTo(0, 200)
             else {
+                this.changeInfo = false
                 this.card = {}
                 this.photo = ''
             }

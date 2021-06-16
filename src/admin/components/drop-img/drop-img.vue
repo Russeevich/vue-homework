@@ -7,12 +7,17 @@
                     p для загрузки изображения
                 appButton(typeAttr="file" title="Загрузить" @change="$emit('changeImage', $event)" v-if="!src").drop__img--button
         appButton(title="Изменить превью" v-if="src" @change="$emit('changeImage', $event)" types="file").drop__img--change
+        .drop--error(v-if="errorMessage") {{errorMessage}}
 </template>
 
 <script>
 export default {
     props:{
         src:{
+            type: String,
+            default: ""
+        },
+        errorMessage: {
             type: String,
             default: ""
         }

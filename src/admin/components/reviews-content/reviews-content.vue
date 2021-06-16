@@ -3,7 +3,7 @@
         .container.container--content.container--reviews-content
             content-header(title="Отзывы")
             card(v-if="onChange").reviews__content--create
-                h4(slot="title").reviews__content--title Новый отзыв
+                h4(slot="title").reviews__content--title {{onChangeReview ? 'Редактирование отзыва' : 'Новый отзыв'}}
                 reviewsForm(slot="content" @remove="change" :reviewItem="reviewItem" :photos="photo" :onChangeReview="onChangeReview")
             ul.reviews__content--list
                 li(v-if="!onChange").reviews__content--item
